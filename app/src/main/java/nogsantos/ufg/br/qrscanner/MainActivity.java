@@ -1,27 +1,24 @@
 package nogsantos.ufg.br.qrscanner;
+
 import android.app.Activity;
 import android.content.pm.ActivityInfo;
+import android.hardware.Camera;
+import android.hardware.Camera.AutoFocusCallback;
+import android.hardware.Camera.PreviewCallback;
+import android.hardware.Camera.Size;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.Window;
-import android.widget.FrameLayout;
 import android.widget.Button;
-import android.hardware.Camera;
-import android.hardware.Camera.PreviewCallback;
-import android.hardware.Camera.AutoFocusCallback;
-import android.hardware.Camera.Parameters;
-import android.hardware.Camera.Size;
+import android.widget.FrameLayout;
 import android.widget.TextView;
-import android.graphics.ImageFormat;
 
-import net.sourceforge.zbar.ImageScanner;
+import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
+import net.sourceforge.zbar.ImageScanner;
 import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
-import net.sourceforge.zbar.Config;
 
 public class MainActivity extends Activity{
     private Camera mCamera;
@@ -34,14 +31,15 @@ public class MainActivity extends Activity{
     ImageScanner scanner;
 
     private boolean barcodeScanned = false;
-    private boolean previewing = true;
-    /**
-     * @todo Está funcionando apenas em plataformas 4.0
-     */
+    private boolean previewing     = true;
+
     static {
         System.loadLibrary("iconv");
+        System.loadLibrary("zbarjni");
     }
-
+    /**
+     *
+     */
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -50,9 +48,10 @@ public class MainActivity extends Activity{
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         autoFocusHandler = new Handler();
-        mCamera = getCameraInstance();
-
-        // Instance barcode scanner
+        mCamera          = getCameraInstance();
+        /*
+         * Instance barcode scanner
+         */
         scanner = new ImageScanner();
         scanner.setConfig(0, Config.X_DENSITY, 3);
         scanner.setConfig(0, Config.Y_DENSITY, 3);
@@ -78,13 +77,16 @@ public class MainActivity extends Activity{
             }
         });
     }
-
+    /**
+     *
+     */
     public void onPause() {
         super.onPause();
         releaseCamera();
     }
-
-    /** A safe way to get an instance of the Camera object. */
+    /**
+     *  A safe way to get an instance of the Camera object.
+     */
     public static Camera getCameraInstance(){
         Camera c = null;
         try {
@@ -93,7 +95,9 @@ public class MainActivity extends Activity{
         }
         return c;
     }
-
+    /**
+     *
+     */
     private void releaseCamera() {
         if (mCamera != null) {
             previewing = false;
@@ -102,14 +106,18 @@ public class MainActivity extends Activity{
             mCamera = null;
         }
     }
-
+    /**
+     *
+     */
     private Runnable doAutoFocus = new Runnable() {
         public void run() {
             if (previewing)
                 mCamera.autoFocus(autoFocusCB);
         }
     };
-
+    /**
+     *
+     */
     PreviewCallback previewCb = new PreviewCallback() {
         public void onPreviewFrame(byte[] data, Camera camera) {
             Camera.Parameters parameters = camera.getParameters();
@@ -133,8 +141,9 @@ public class MainActivity extends Activity{
             }
         }
     };
-
-    // Mimic continuous auto-focusing
+    /*
+     * Mimic continuous auto-focusing
+     */
     AutoFocusCallback autoFocusCB = new AutoFocusCallback() {
         public void onAutoFocus(boolean success, Camera camera) {
             autoFocusHandler.postDelayed(doAutoFocus, 1000);

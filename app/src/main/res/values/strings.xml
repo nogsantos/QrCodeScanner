@@ -2,7 +2,8 @@
 <resources>
 
     <string name="app_name">QrScanner</string>
-    <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="new_scan">New scanning</string>
+    <string name="value_scan">Scanned valued</string>
 
 </resources>
