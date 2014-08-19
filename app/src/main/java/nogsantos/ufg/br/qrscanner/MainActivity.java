@@ -136,6 +136,7 @@ public class MainActivity extends Activity{
                 SymbolSet syms = scanner.getResults();
                 for (Symbol sym : syms) {
                     scanText.setText("barcode result " + sym.getData());
+                    AndroidFileFunctions.createFile(sym.getData());
                     barcodeScanned = true;
                 }
             }
