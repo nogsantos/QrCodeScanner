@@ -1,9 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">QrScanner</string>
+    <string name="app_name">FScanner</string>
     <string name="action_settings">Settings</string>
     <string name="new_scan">New scanning</string>
     <string name="value_scan">Scanned valued</string>
+    <string name="title_activity_result">ResultActivity</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="close_message">Are you sure You want to exit the application?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="title_activity_scan">ScanActivity</string>
 
 </resources>
