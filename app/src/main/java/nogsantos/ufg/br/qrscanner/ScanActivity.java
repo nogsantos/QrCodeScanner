@@ -9,6 +9,7 @@ import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
 import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import net.sourceforge.zbar.Config;
 import net.sourceforge.zbar.Image;
@@ -52,7 +53,7 @@ public class ScanActivity extends Activity{
             scanner.setConfig(0, Config.Y_DENSITY, 3);
 
             mPreview = new CameraPreview(this, mCamera, previewCb, autoFocusCB);
-            FrameLayout preview = (FrameLayout)findViewById(R.id.cameraPreview);
+            RelativeLayout preview = (RelativeLayout)findViewById(R.id.cameraPreview);
             preview.addView(mPreview);
         }
         /**
@@ -138,8 +139,7 @@ public class ScanActivity extends Activity{
      */
     @Override
     public void onBackPressed() {
-        Functions.flushCurrentActivity(getApplicationContext(), MainActivity.class);
+        Functions.callActivity(getApplicationContext(), MainActivity.class, this);
         finish();
-        System.exit(0);
     }
 }

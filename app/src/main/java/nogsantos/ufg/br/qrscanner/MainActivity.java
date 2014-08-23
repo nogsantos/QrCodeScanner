@@ -12,24 +12,34 @@ import android.view.View;
 import nogsantos.ufg.br.qrscanner.Utilities.Functions;
 
 public class MainActivity extends Activity{
+    /**
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
-
+    /**
+     *
+     */
     public void startScan(View view){
         Intent i = new Intent(getApplicationContext(),ScanActivity.class);
         startActivity(i);
+        this.finish();
     }
-
+    /**
+     *
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.scan, menu);
         return true;
     }
-
+    /**
+     *
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
@@ -40,32 +50,5 @@ public class MainActivity extends Activity{
             return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    /**
-     * Quando o botão de retorno é pressionado, o sistema valida se realmente o usuário deseja
-     * encerrar a aplicação.
-     *
-     */
-    @Override
-    public void onBackPressed() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        builder.setMessage(R.string.close_message)
-                .setCancelable(false)
-                .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog,int id) {
-                        Functions.flushCurrentActivity(getApplicationContext(), MainActivity.class);
-                        finish();
-                        System.exit(0);
-                    }
-                }).setNegativeButton(R.string.no,new DialogInterface.OnClickListener() {
-            public void onClick(DialogInterface dialog,int id) {
-                dialog.cancel();
-                Functions.flushCurrentActivity(getApplicationContext(), MainActivity.class);
-                finish();
-            }
-        });
-        AlertDialog alert = builder.create();
-        alert.show();
     }
 }

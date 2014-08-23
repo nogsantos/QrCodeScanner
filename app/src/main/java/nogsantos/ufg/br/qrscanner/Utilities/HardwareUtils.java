@@ -19,11 +19,11 @@ public final class HardwareUtils {
     /**
      * Cria um arquivo no diretório Documents do dispoditivo
      */
-    public static void createFile(String text, String fileName, String fileExtension) {
+    public static void createFile(String text, String fileName) {
         try {
             File external = Environment.getExternalStorageDirectory();
             String sdcardPath = external.getPath();
-            File file = new File(sdcardPath + "/Documents/"+fileName+"."+fileExtension);
+            File file = new File(sdcardPath + "/Documents/"+fileName+".txt");
             file.createNewFile();
             FileWriter filewriter = new FileWriter(file);
             BufferedWriter out = new BufferedWriter(filewriter);

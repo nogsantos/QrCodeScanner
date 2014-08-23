@@ -1,25 +1,31 @@
 <RelativeLayout
-xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="fill_parent"
-android:layout_height="wrap_content" >
-
-<LinearLayout
-    android:id="@+id/rev_arrow"
-    android:orientation="horizontal"
+    android:id="@+id/cameraPreview"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:background="#80000000"
-    android:layout_alignParentTop="true" >
+    android:layout_height="fill_parent">
 
-    <FrameLayout
-        android:id="@+id/cameraPreview"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/rev_arrow"
-        android:layout_weight="1"
-        >
-    </FrameLayout>
-</LinearLayout>
-
-
+    <RelativeLayout
+        android:id="@+id/linearLayoutMain2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:alpha="0.50"
+        android:background="#000000"
+        android:layout_gravity="left"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true">
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="@string/help_scan"
+            android:id="@+id/textView"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:gravity="left"
+            style="@style/TextShadowMedium"
+            android:visibility="visible" />
+    </RelativeLayout>
 </RelativeLayout>
