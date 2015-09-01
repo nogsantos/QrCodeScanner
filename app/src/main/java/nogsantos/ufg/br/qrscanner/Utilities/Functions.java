@@ -1,8 +1,11 @@
 package nogsantos.ufg.br.qrscanner.Utilities;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+
+import nogsantos.ufg.br.qrscanner.R;
 
 /**
  * Created by nogsantos on 8/21/14.
@@ -24,6 +27,22 @@ public final class Functions {
         context.startActivity(targetActivity);
         activity.finish();
     }
+    /*
+     * Progress
+     */
+    private static ProgressDialog progress;
 
+    public static void progressDialogShow(Context context){
+        progress = ProgressDialog.show(
+            context,
+            context.getString(R.string.processing),
+            context.getString(R.string.processing_message),
+            false,
+            true
+        );
+    }
+    public static void progressDialogDimiss(){
+        progress.dismiss();
+    }
 
 }

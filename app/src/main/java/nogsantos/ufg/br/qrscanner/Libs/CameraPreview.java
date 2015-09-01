@@ -1,4 +1,4 @@
-package nogsantos.ufg.br.qrscanner;
+package nogsantos.ufg.br.qrscanner.Libs;
 
 import android.content.Context;
 import android.hardware.Camera;

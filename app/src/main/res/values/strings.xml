@@ -18,5 +18,7 @@
     <string name="save_result_message">Your file will be saved on Documents folder.</string>
     <string name="cancel">Cancel</string>
     <string name="save_result_success">saved file successfully</string>
+    <string name="processing">Processing...</string>
+    <string name="processing_message">The operation is processing, please wait.</string>
 
 </resources>

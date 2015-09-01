@@ -1,14 +1,11 @@
 package nogsantos.ufg.br.qrscanner;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.hardware.Camera;
 import android.os.Bundle;
 import android.os.Handler;
-import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 
 import net.sourceforge.zbar.Config;
@@ -17,6 +14,7 @@ import net.sourceforge.zbar.ImageScanner;
 import net.sourceforge.zbar.Symbol;
 import net.sourceforge.zbar.SymbolSet;
 
+import nogsantos.ufg.br.qrscanner.Libs.CameraPreview;
 import nogsantos.ufg.br.qrscanner.Utilities.Functions;
 import nogsantos.ufg.br.qrscanner.Utilities.HardwareUtils;
 
